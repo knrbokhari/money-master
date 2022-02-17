@@ -32,6 +32,13 @@ function calculatingBalances(expensesOrSaving, income, totals, balances, isRemai
     }
     else if (income <= expensesOrSaving) {
         alert('Your total expenses are higher than income.');
+        totals.innerText = "00";
+        if (isRemainingBalance == false) {
+            balances.innerText = "00";
+        }
+        else {
+            balances.innerText = "00";
+        }
     }
     else if (isNaN(expensesOrSaving) == true) {
         alert("Please Provide valid information.");
@@ -80,5 +87,7 @@ document.getElementById('saving').addEventListener('click', function () {
     }
     else if (0 > remainingBalances) {
         alert('Your total savings is higher than balance.');
+        totalSaving.innerText = "00";
+        remainingBalance.innerText = "00";
     }
 });
