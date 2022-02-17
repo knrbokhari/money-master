@@ -24,13 +24,16 @@
     </header>
 
     <!-- main -->
-    <main class="container">
+    <main class="container mb-4">
         <div class="row">
+            <!-- left-side -->
             <div class="col-md-6 left-side">
-                <img src="img/money.jpg" alt="money.jpg" class="img-fluid" width="100%">
+                <img src="img/money.jpg" alt="money.jpg" class="img-fluid">
             </div>
+            <!-- right-side -->
             <div class="col-md-6 mt-5 mt-md-0">
                 <div class="right-side p-md-5 w-100">
+                    <!-- Income -->
                     <div class="pt-3 pt-md-0">
                         <h2>Income</h2>
                         <div class="text-start text-md-end">
@@ -38,6 +41,7 @@
                             <input type="text" name="" id="income-field">
                         </div>
                     </div>
+                    <!-- Expenses -->
                     <div>
                         <h2>Expenses</h2>
                         <div class="text-start text-md-end">
@@ -53,20 +57,23 @@
                             <input type="text" name="" id="clothes-field">
                         </div>
                     </div>
+                    <!-- Calculate -->
                     <div>
                         <button id="calculate" class="calculate">Calculate</button>
                         <h2>Total Expenses: <span id="total-expenses">00</span> </h2>
                         <h2>Balance: <span id="balance">00</span> </h2>
                     </div>
+                    <!-- saving -->
                     <div class="d-flex justify-content-around align-items-center">
-                        <h3>Save:</h3>
+                        <h3 class="m-0 mt-2">Save:</h3>
                         <input type="text" name="" id="percent-input" class="text-center m-0 w-25">
-                        <h3>%</h3>
+                        <h3 class="m-0 mt-2">%</h3>
                         <button id="saving" class="d-inline m-0 py-1">Save</button>
                     </div>
+                    <!-- saving & remaining balance -->
                     <div>
                         <h2>Saving Amount: <span id="saving-amount">00</span> </h2>
-                        <h2>Remaining Balance: <span id="remaining-balance">00</span> </h2>
+                        <h2 class="pb-3">Remaining Balance: <span id="remaining-balance">00</span> </h2>
                     </div>
                 </div>
             </div>
