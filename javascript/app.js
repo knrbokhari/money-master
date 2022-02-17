@@ -3,7 +3,7 @@ function inputChacking(inputFields, field) {
     const input = document.getElementById(inputFields);
     if (isNaN(input.value) == false) {
         if (0 <= input.value) {
-            return input.value;
+            return parseInt(input.value);
         }
         else {
             alert("Give a prime number in " + field + ' field');
@@ -17,10 +17,9 @@ function inputChacking(inputFields, field) {
 }
 
 // calculating balances
-function calculatingBalances(expensesOrSaving, totals, balances, errorAlert, isRemainingBalance) {
-    const income = inputChacking('income-field', 'income');
+function calculatingBalances(expensesOrSaving, income, totals, balances, isRemainingBalance) {
+    // getting balance from html
     const balance = document.getElementById('balance');
-
 
     if (expensesOrSaving <= income) {
         totals.innerText = expensesOrSaving;
@@ -31,7 +30,10 @@ function calculatingBalances(expensesOrSaving, totals, balances, errorAlert, isR
             balances.innerText = balance.innerText - expensesOrSaving;
         }
     }
-    else {
+    else if (income <= expensesOrSaving) {
+        alert('Your total expenses are higher than income.');
+    }
+    else if (isNaN(expensesOrSaving) == true) {
         alert("Please Provide valid information.");
     }
 }
@@ -39,6 +41,7 @@ function calculatingBalances(expensesOrSaving, totals, balances, errorAlert, isR
 // income and expenses calculating
 document.getElementById('calculate').addEventListener("click", function () {
     // get all input value from function
+    const income = inputChacking('income-field', 'income');
     const food = inputChacking('foot-field', 'food');
     const rent = inputChacking('rent-field', 'remt');
     const clothes = inputChacking('clothes-field', 'clothes');
@@ -48,10 +51,10 @@ document.getElementById('calculate').addEventListener("click", function () {
     const balance = document.getElementById('balance');
 
     // Getting Total Expenses
-    const expenses = parseInt(food) + parseInt(rent) + parseInt(clothes);
+    const expenses = food + rent + clothes;
 
     // calling calculatingBalances function
-    calculatingBalances(expenses, totalExpenses, balance, 'expenses', false);
+    calculatingBalances(expenses, income, totalExpenses, balance, false);
 });
 
 // saving and Remaining Balance calculating
@@ -73,9 +76,9 @@ document.getElementById('saving').addEventListener('click', function () {
 
     // calling calculatingBalances function
     if (0 <= remainingBalances) {
-        calculatingBalances(saving, totalSaving, remainingBalance, 'savings', true);
+        calculatingBalances(saving, income, totalSaving, remainingBalance, true);
     }
     else if (0 > remainingBalances) {
-        alert('Please Provide valid information.');
+        alert('Your total savings is higher than balance.');
     }
 });
